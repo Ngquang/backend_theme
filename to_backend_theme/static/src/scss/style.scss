@@ -70,12 +70,33 @@ body {
 	}
 }
 
+// Avoid avatar image stretch
 .o_Follower{
     a{
         .o_Follower_avatar{
             object-fit: cover;
         }
     }
+}
+
+// Fix `pad` UI
+.o_note_form_view.o_form_view {
+    .o_form_sheet_bg {
+        // Odoo try to set a child height with true value (500px) but the correctly way is set true value for parent-flex
+        // currently Odoo set .oe_pad .oe_pad_content.oe_editing {height:500px; ...}
+        height: 500px;
+        .o_form_sheet {
+            .oe_pad {
+                .oe_pad_content {
+                    display: flex;
+                }
+            }    
+        }
+    }
+}
+.oe_pad .oe_pad_content.oe_editing{
+    display: flex;
+    flex: 1;
 }
 
 .o_control_panel {
